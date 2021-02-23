@@ -39,9 +39,26 @@ class KubernetesClientC < Formula
           cmake_cmdline = line.strip
           if cmake_cmdline.start_with? "install"
             line = "install(TARGETS ${pkgName} DESTINATION )
+
 file(GLOB HEAD_FILES \"include/*.h\")
-message(STATUS \"head files: ${HEAD_FILES}\")
-install(FILES ${HEAD_FILES} DESTINATION include/kubernetes-c )"
+message(STATUS \"head files: ${PUBLIC_HEAD_FILES}\")
+install(FILES ${HEAD_FILES} DESTINATION include/kubernetes-c/include )
+
+file(GLOB API_HEAD_FILES \"api/*.h\")
+message(STATUS \"head files: ${API_HEAD_FILES}\")
+install(FILES ${API_HEAD_FILES} DESTINATION include/kubernetes-c/api )
+
+file(GLOB CONFIG_HEAD_FILES \"config/*.h\")
+message(STATUS \"head files: ${CONFIG_HEAD_FILES}\")
+install(FILES ${CONFIG_HEAD_FILES} DESTINATION include/kubernetes-c/config )
+
+file(GLOB MODEL_HEAD_FILES \"model/*.h\")
+message(STATUS \"head files: ${MODEL_HEAD_FILES}\")
+install(FILES ${MODEL_HEAD_FILES} DESTINATION include/kubernetes-c/model )
+
+file(GLOB EXTERNAL_HEAD_FILES \"external/*.h\")
+message(STATUS \"head files: ${EXTERNAL_HEAD_FILES}\")
+install(FILES ${EXTERNAL_HEAD_FILES} DESTINATION include/kubernetes-c/external )"
             append_install_include = true
           end
         end
