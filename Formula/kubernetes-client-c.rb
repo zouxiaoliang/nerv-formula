@@ -30,7 +30,7 @@ class KubernetesClientC < Formula
             writer.write "    add_definitions(-Dsecure_getenv=getenv)\n"
             writer.write "endif(APPLE)\n"
             
-            line = line.gsub ")", "libssl.a libcrypto.a yaml)"
+            line = "if (APPLE)\n    #{line.gsub ")", "libssl.a libcrypto.a yaml)"}\nelse()\n    #{line}\nendif(APPLE)\n"
             append_library = true
           end
         end
