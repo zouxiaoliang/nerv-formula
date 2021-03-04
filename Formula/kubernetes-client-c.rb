@@ -58,7 +58,7 @@ install(FILES ${MODEL_HEAD_FILES} DESTINATION include/kubernetes-c/model )
 
 file(GLOB MODEL_HEAD_FILES \"watch/*.h\")
 message(STATUS \"head files: ${MODEL_HEAD_FILES}\")
-install(FILES ${MODEL_HEAD_FILES} DESTINATION include/kubernetes-c/model )
+install(FILES ${MODEL_HEAD_FILES} DESTINATION include/kubernetes-c/watch )
 
 file(GLOB EXTERNAL_HEAD_FILES \"external/*.h\")
 message(STATUS \"head files: ${EXTERNAL_HEAD_FILES}\")
